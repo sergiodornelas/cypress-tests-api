@@ -2,8 +2,6 @@
 
 ➫ A _API_ utilizada no projeto é a Lojinha (API criada pelo Júlio de Lima para aprendizagem de técnicas e ferramentas de teste de software). 
 
-➫ Link da API: [Lojinha➚](https://editor.swagger.io/?_ga=2.227561117.1401421202.1694011850-1276534442.1686294257).
-
 ➫ O projeto trata-se de uma automação de todos os endpoints da API e organização dos elementos por meio de custom commands.
 
  ## _Endpoints:_
