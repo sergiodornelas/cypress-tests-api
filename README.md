@@ -2,8 +2,6 @@
 
 ➫ A _API_ utilizada no projeto é a Lojinha (API criada pelo Júlio de Lima para aprendizagem de técnicas e ferramentas de teste de software). 
 
-➫ O projeto trata-se de uma automação de todos os endpoints da API e organização dos elementos por meio de custom commands.
-
  ## _Endpoints:_
 
 * Obter token do usuário.
