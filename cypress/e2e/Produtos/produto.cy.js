@@ -1,14 +1,15 @@
 /// <reference types="Cypress"/>
+const produto = require('../../fixtures/produto.json')
 
 describe("Funcionalidade produto", () => {
-  it.only("Adicionar um novo produto", () => {
-    cy.AdcProduto("bola", "200.0", "preto", "pito", "2").then((response) => {
+  it("Adicionar um novo produto", () => {
+    cy.AdcProduto(produto[0].produto1, produto[0].valor1, produto[0].cor1, produto[0].componente1, produto[0].quantidade1).then((response) => {
       expect(response.status).to.equal(201);
       expect(response.body.message).to.equal("Produto adicionado com sucesso");
     });
   });
 
-  it.only("Buscar os produtos do usuário", () => {
+  it("Buscar os produtos do usuário", () => {
     cy.BuscarProdutos().then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.message).to.equal(
@@ -17,15 +18,15 @@ describe("Funcionalidade produto", () => {
     });
   });
 
-  it.only("Buscar produtos por id", () => {
+  it("Buscar produtos por id", () => {
     cy.BuscarProdutosId().then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.message).to.equal("Detalhando dados do produto");
     });
   });
 
-  it.only("Alterar informações de um produto", () => {
-    cy.Alterarproduto("play2", "300.0", "rosa", "controle", "3").then(
+  it("Alterar informações de um produto", () => {
+    cy.Alterarproduto(produto[1].produto2, produto[1].valor2, produto[1].cor2, produto[1].componente2, produto[1].quantidade2).then(
       (response) => {
         expect(response.status).to.equal(200);
         expect(response.body.message).to.equal("Produto alterado com sucesso");

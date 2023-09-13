@@ -1,8 +1,9 @@
 ///<reference types="Cypress"/>
+const componente = require('../../fixtures/componente.json')
 
 describe("Funcionalidade componente.", () => {
-  it.only("Adicionar um novo componente ao produto", () => {
-    cy.AdcNovoComponente("carrinhos", "23").then((response) => {
+  it("Adicionar um novo componente ao produto", () => {
+    cy.AdcNovoComponente(componente[0].componenteProduto1, componente[0].quandidadeProduto1).then((response) => {
       expect(response.status).to.equal(201);
       expect(response.body.message).to.equal(
         "Componente de produto adicionado com sucesso"
@@ -10,7 +11,7 @@ describe("Funcionalidade componente.", () => {
     });
   });
 
-  it.only("Buscar todos os componentes de um produto.", () => {
+  it("Buscar todos os componentes de um produto.", () => {
     cy.BuscarComponentes().then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.message).to.equal(
@@ -19,7 +20,7 @@ describe("Funcionalidade componente.", () => {
     });
   });
 
-  it.only("Buscar um componente de um produto.", () => {
+  it("Buscar um componente de um produto.", () => {
     cy.buscarUmComponente().then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.message).to.equal("Detalhando dados do componente de produto")
@@ -27,7 +28,7 @@ describe("Funcionalidade componente.", () => {
   });
 
   it("Alterar informações de um componente de produto.", () => {
-    cy.AlterarInfoComponente("carrinho", "3").then((response) => {
+    cy.AlterarInfoComponente(componente[1].componenteProduto2, componente[1].quandidadeProduto2).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.message).to.equal(
         "Componente de produto alterado com sucesso"

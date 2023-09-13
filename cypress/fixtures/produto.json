@@ -1,0 +1,21 @@
+[
+    {
+        "produto1":"bola",
+        "valor1":"200.0",
+        "cor1":"preto",
+        "componente1": "pito",
+        "quantidade1":"2"
+    },
+    {
+        "produto2":"play2",
+        "valor2":"300.0",
+        "cor2":"rosa",
+        "componente2": "controle",
+        "quantidade2":"2"
+    }
+]
+
+
+
+
+
