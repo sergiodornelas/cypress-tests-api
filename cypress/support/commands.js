@@ -29,17 +29,20 @@ Cypress.Commands.add("login", (login, senha) => {
 //Comando customizado para limpar dados do usuário.
 
 Cypress.Commands.add("limparDados", () => {
+let token = Cypress.env('token')
+
   cy.request({
     method: "Delete",
     url: "/v2/dados",
     headers: {
-      token:
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzNCIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMjAiLCJ1c3Vhcmlvbm9tZSI6Imp1bmlvcjEifQ.q_aHmNW3LwHKO4YrPNrb_oo116SiNBYZ2lZgVefhD3s",
+      token: token
     },
   });
 });
 
 //Comando customizado para adicionar um novo produto.
+let token = Cypress.env('token')
+
 Cypress.Commands.add(
   "AdcProduto",
   (
@@ -65,8 +68,7 @@ Cypress.Commands.add(
         ],
       },
       headers: {
-        token:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk",
+        token: token
       },
     });
   }
@@ -74,24 +76,26 @@ Cypress.Commands.add(
 
 //Comando customizado para buscar os produtos do usuário.
 Cypress.Commands.add("BuscarProdutos", () => {
+  let token = Cypress.env('token')
+
   cy.request({
     method: "Get",
     url: "/v2/produtos",
     headers: {
-      token:
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk",
+      token: token
     },
   });
 });
 
 //Comando customizado para buscar produtos por id.
 Cypress.Commands.add("BuscarProdutosId", () => {
+  let token = Cypress.env('token')
+
   cy.request({
     method: "Get",
     url: "/v2/produtos/919624",
     headers: {
-      token:
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk",
+      token: token
     },
   });
 });
@@ -99,6 +103,8 @@ Cypress.Commands.add("BuscarProdutosId", () => {
 //Comando customizado para alterar informações de um produtos.
 Cypress.Commands.add(
   "Alterarproduto", (produtoNome2, produtoValor2, produtoCor2, componenteNome2, componenteQuantidade2) => {
+    let token = Cypress.env('token')
+
     cy.request({
       method: "Put",
       url: "/v2/produtos/919624",
@@ -115,8 +121,7 @@ Cypress.Commands.add(
         ],
       },
       headers: {
-        token:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk",
+        token: token
       },
     });
   }
@@ -124,12 +129,13 @@ Cypress.Commands.add(
 
 //Comando customizado para remover um produto.
 Cypress.Commands.add("Removerproduto",() => {
+  let token = Cypress.env('token')
+
     cy.request({
       method: "Delete",
       url: "/v2/produtos/919615",
       headers: {
-        token:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk",
+        token: token
       },
     });
   }
@@ -138,6 +144,8 @@ Cypress.Commands.add("Removerproduto",() => {
 //Comando customizado para adicionar um novo componente ao
 
 Cypress.Commands.add('AdcNovoComponente', (nomeComponente, quantidadeComponente) => { 
+  let token = Cypress.env('token')
+
   cy.request({
     method: "post",
     url: "/v2/produtos/919624/componentes",
@@ -145,30 +153,36 @@ Cypress.Commands.add('AdcNovoComponente', (nomeComponente, quantidadeComponente)
       "componenteNome": nomeComponente,
       "componenteQuantidade": quantidadeComponente
     },
-    headers: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk"}
+    headers: {token: token}
   })
 })
 
 //Comando customizado para buscar todos os componentes de um produto.
 Cypress.Commands.add('BuscarComponentes', () => { 
+  let token = Cypress.env('token')
+
   cy.request({
     method: "get",
     url: "/v2/produtos/919624/componentes",
-    headers: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk"}
+    headers: {token: token}
   })
 })
 
 //Comando customizado para buscar um componente de um produto.
 Cypress.Commands.add('buscarUmComponente', () => { 
+  let token = Cypress.env('token')
+
   cy.request({
     method: "get",
     url: "/v2/produtos/919624/componentes/942124",
-    headers: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk"}
+    headers: {token: token}
   })
 })
 
 //Comando customizado para alterar informações de um componente de produto.
 Cypress.Commands.add('AlterarInfoComponente', (componenteNomeInfo, componenteQntInfo) => { 
+let token = Cypress.env('token')
+
   cy.request({
     method: "put",
     url: "/v2/produtos/919624/componentes/942094",
@@ -176,15 +190,17 @@ Cypress.Commands.add('AlterarInfoComponente', (componenteNomeInfo, componenteQnt
       "componenteNome": componenteNomeInfo,
       "componenteQuantidade": componenteQntInfo
     },
-    headers: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk"}
+    headers: {token: token}
   })
 })
 
 //Comando customizado para remover um componente de um produto.
 Cypress.Commands.add('RemoveComponente', () => { 
+  let token = Cypress.env('token')
+
   cy.request({
     method: "delete",
     url: "/v2/produtos/919624/componentes/942063",
-    headers: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjgzMyIsInVzdWFyaW9sb2dpbiI6ImRvcm5lbGFzMTIzIiwidXN1YXJpb25vbWUiOiJqdW5pb3IifQ.kwovN6Pydst9NkXOFHrKTcKTstFe8bUtb767Et-PNPk"}
+    headers: {token: token}
   })
 })
